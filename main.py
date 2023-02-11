@@ -1,5 +1,5 @@
 from utils import load_data
-from simple_L_layer_NN import L_layer_model
+from simple_L_layer_NN import L_layer_model, predict
 
 
 train_x_orig, train_y, test_x_orig, test_y, classes = load_data()
@@ -18,3 +18,8 @@ test_x = test_x_flatten/255.
 layers_dims = [12288, 20, 7, 5, 1] #  4-layer model
 
 parameters, costs = L_layer_model(train_x, train_y, layers_dims, num_iterations = 2500, print_cost = True)
+
+pred_train, train_acc = predict(train_x, train_y, parameters)
+pred_test, test_acc = predict(test_x, test_y, parameters)
+
+print(f'\nTrain Accuracy: {train_acc}\nTest Accuracy: {test_acc}')

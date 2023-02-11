@@ -199,7 +199,7 @@ def L_model_backward(AL, Y, caches):
     """
     grads = {}
     L = len(caches) # the number of layers
-    m = AL.shape[1]
+
     Y = Y.reshape(AL.shape) # after this line, Y is the same shape as AL
     
     # Initializing the backpropagation
@@ -253,11 +253,10 @@ def predict(X, y, parameters):
     p -- predictions for the given dataset X
     """
     m = X.shape[1]
-    n = len(parameters) // 2 # number of layers in the neural network
     p = np.zeros((1,m))
     
     # Forward propagation
-    probas, caches = L_model_forward(X, parameters)
+    probas, _ = L_model_forward(X, parameters)
 
     # convert probas to 0/1 predictions
     for i in range(0, probas.shape[1]):
@@ -265,13 +264,8 @@ def predict(X, y, parameters):
             p[0,i] = 1
         else:
             p[0,i] = 0
-    
-    #print results
-    #print ("predictions: " + str(p))
-    #print ("true labels: " + str(y))
-    print("Accuracy: "  + str(np.sum((p == y)/m)))
         
-    return p
+    return p, np.sum((p == y)/m)
 
 def L_layer_model(X, Y, layers_dims, learning_rate = 0.0075, num_iterations = 3000, print_cost=False):
     """
