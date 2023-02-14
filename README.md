@@ -1,6 +1,6 @@
 # Neural Network from Scratch
 
-Given a training data $x,y$ where $x \in \mathbb{R}^{n_{x}}$ is an input matrix and $y \in \left{0, 1\right}$ contains labels and $m$ is total training examples, we can establish a linear relation ship as
+Given a training data $x,y$ where $x \in \mathbb{R}^{n_{x}}$ is an input matrix and $y \in \{0, 1 \}$ contains labels and $m$ is total training examples, we can establish a linear relation ship as
 
 $$
 \hat{y} = w^{T} \cdot x + b
